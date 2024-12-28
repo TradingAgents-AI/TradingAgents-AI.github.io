@@ -106,15 +106,15 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
-          <p>Autonomous agents leveraging Large Language Models (LLMs) present a transformative approach to decision-making by replicating human processes and workflows across various applications. These systems enhance the problem-solving capabilities of language agents by equipping them with tools and enabling collaboration with other agents, effectively breaking down complex problems into manageable components <cite>Park et al., 2023</cite>, <cite>Havrilla et al., 2024</cite>, <cite>Talebirad et al., 2023</cite>, <cite>Tang et al., 2024</cite>. One prominent application of these autonomous frameworks is in the financial market—a highly complex system influenced by numerous factors, including company fundamentals, market sentiment, technical indicators, and macroeconomic events.</p>
+          <p>Autonomous agents leveraging Large Language Models (LLMs) present a transformative approach to decision-making by replicating human processes and workflows across various applications. These systems enhance the problem-solving capabilities of language agents by equipping them with tools and enabling collaboration with other agents, effectively breaking down complex problems into manageable components. One prominent application of these autonomous frameworks is in the financial market—a highly complex system influenced by numerous factors, including company fundamentals, market sentiment, technical indicators, and macroeconomic events.</p>
           
-          <p>Traditional algorithmic trading systems often rely on quantitative models that struggle to fully capture the complex interplay of diverse factors. In contrast, LLMs excel at processing and understanding natural language data, making them particularly effective for tasks that require textual comprehension, such as analyzing news articles, financial reports, and social media sentiment. Additionally, deep learning-based trading systems often suffer from low explainability, as they rely on hidden features that drive decision-making but are difficult to interpret. Recent advancements in multi-agent LLM frameworks for finance have shown significant promise in addressing these challenges. These frameworks create explainable AI systems, where decisions are supported by evidence and transparent reasoning <cite>Li et al., 2023</cite>, <cite>Wang et al., 2024</cite>, <cite>Yu et al., 2024</cite>, demonstrating their potential in financial applications.</p>
+          <p>Traditional algorithmic trading systems often rely on quantitative models that struggle to fully capture the complex interplay of diverse factors. In contrast, LLMs excel at processing and understanding natural language data, making them particularly effective for tasks that require textual comprehension, such as analyzing news articles, financial reports, and social media sentiment. Additionally, deep learning-based trading systems often suffer from low explainability, as they rely on hidden features that drive decision-making but are difficult to interpret. Recent advancements in multi-agent LLM frameworks for finance have shown significant promise in addressing these challenges. These frameworks create explainable AI systems, where decisions are supported by evidence and transparent reasoning, demonstrating their potential in financial applications.</p>
           
           <p>Despite their potential, most current applications of language agents in the financial and trading sectors face two significant limitations:</p>
           
-          <strong>Lack of Realistic Organizational Modeling:</strong> Many frameworks fail to capture the complex interactions between agents that mimic the structure of real-world trading firms <cite>Li et al., 2023</cite>, <cite>Wang et al., 2024</cite>, <cite>Yu et al., 2024</cite>. Instead, they focus narrowly on specific task performance, often disconnected from the organizational workflows and established human operating procedures proven effective in trading. This limits their ability to fully replicate and benefit from real-world trading practices.
+          <strong>Lack of Realistic Organizational Modeling:</strong> Many frameworks fail to capture the complex interactions between agents that mimic the structure of real-world trading firms. Instead, they focus narrowly on specific task performance, often disconnected from the organizational workflows and established human operating procedures proven effective in trading. This limits their ability to fully replicate and benefit from real-world trading practices.
           
-          <strong>Inefficient Communication Interfaces:</strong> Most existing systems use natural language as the primary communication medium, typically relying on message histories or an unstructured pool of information for decision-making <cite>Park et al., 2023</cite>, <cite>Qian et al., 2024</cite>. This approach often results in a "telephone effect", where details are lost, and states become corrupted as conversations lengthen. Agents struggle to maintain context and track extended histories while filtering out irrelevant information from previous decision steps, diminishing their effectiveness in handling complex, dynamic tasks. Additionally, the unstructured pool-of-information approach lacks clear instructions, forcing logical communication and information exchange between agents to depend solely on retrieval, which disrupts the relational integrity of the data.</p>
+          <strong>Inefficient Communication Interfaces:</strong> Most existing systems use natural language as the primary communication medium, typically relying on message histories or an unstructured pool of information for decision-making. This approach often results in a "telephone effect", where details are lost, and states become corrupted as conversations lengthen. Agents struggle to maintain context and track extended histories while filtering out irrelevant information from previous decision steps, diminishing their effectiveness in handling complex, dynamic tasks. Additionally, the unstructured pool-of-information approach lacks clear instructions, forcing logical communication and information exchange between agents to depend solely on retrieval, which disrupts the relational integrity of the data.</p>
           
           <p>In this work, we address these key limitations of existing models by introducing a system that overcomes these challenges. First, our framework bridges the gap by simulating the multi-agent decision-making processes typical of professional trading teams. It incorporates specialized agents tailored to distinct aspects of trading, inspired by the organizational structure of real-world trading firms. These agents include fundamental analysts, sentiment/news analysts, technical analysts, and traders with diverse risk profiles. Bullish and bearish debaters evaluate market conditions to provide balanced recommendations, while a risk management team ensures that exposures remain within acceptable limits. Second, to enhance communication, our framework combines structured outputs for control, clarity, and reasoning with natural language dialogue to facilitate effective debate and collaboration among agents. This hybrid approach ensures both precision and flexibility in decision-making.</p>
           
@@ -136,10 +136,10 @@
           <p>Large Language Models (LLMs) are applied in finance by fine-tuning on financial data or training on financial corpora. This improves the model’s understanding of financial terminology and data, enabling a specialized assistant for analytical support, insights, and information retrieval, rather than trade execution.</p>
           
           <strong>Fine-Tuned LLMs for Finance</strong>
-          <p>Fine-tuning enhances domain-specific performance. Examples include PIXIU (FinMA) <cite>Xie et al., 2023</cite>, which fine-tuned LLaMA on 136K finance-related instructions; FinGPT <cite>Yang et al., 2023</cite>, which used LoRA to fine-tune models like LLaMA and ChatGLM with about 50K finance-specific samples; and Instruct-FinGPT <cite>Zhang et al., 2023</cite>, fine-tuned on 10K instruction samples from financial sentiment analysis datasets. These models outperform their base versions and other open-source LLMs like BLOOM and OPT <cite>Zhang et al., 2022</cite> in finance classification tasks, even surpassing BloombergGPT <cite>Wu et al., 2023</cite> in several evaluations. However, in generative tasks, they perform similarly or slightly worse than powerful general-purpose models like GPT-4, indicating a need for more high-quality, domain-specific datasets.</p>
+          <p>Fine-tuning enhances domain-specific performance. Examples include PIXIU (FinMA), which fine-tuned LLaMA on 136K finance-related instructions; FinGPT, which used LoRA to fine-tune models like LLaMA and ChatGLM with about 50K finance-specific samples; and Instruct-FinGPT, fine-tuned on 10K instruction samples from financial sentiment analysis datasets. These models outperform their base versions and other open-source LLMs like BLOOM and OPT in finance classification tasks, even surpassing BloombergGPT in several evaluations. However, in generative tasks, they perform similarly or slightly worse than powerful general-purpose models like GPT-4, indicating a need for more high-quality, domain-specific datasets.</p>
           
           <strong>Finance LLMs Trained from Scratch</strong>
-          <p>Training LLMs from scratch on finance-specific corpora aims for better domain adaptation. Models like BloombergGPT <cite>Wu et al., 2023</cite>, XuanYuan 2.0 <cite>Zhang et al., 2023</cite>, and Fin-T5 <cite>Lu et al., 2023</cite> combine public datasets with finance-specific data during pretraining. BloombergGPT, for instance, was trained on both general and financial text, with proprietary Bloomberg data enhancing its performance on finance benchmarks. These models outperform general-purpose counterparts like BLOOM-176B and T5 in tasks such as market sentiment classification and summarization. While they may not match larger closed-source models like GPT-3 or PaLM <cite>Chowdhery et al., 2022</cite>, they offer competitive performance among similar-sized open-source models without compromising general language understanding.</p>
+          <p>Training LLMs from scratch on finance-specific corpora aims for better domain adaptation. Models like BloombergGPT, XuanYuan 2.0, and Fin-T5 combine public datasets with finance-specific data during pretraining. BloombergGPT, for instance, was trained on both general and financial text, with proprietary Bloomberg data enhancing its performance on finance benchmarks. These models outperform general-purpose counterparts like BLOOM-176B and T5 in tasks such as market sentiment classification and summarization. While they may not match larger closed-source models like GPT-3 or PaLM, they offer competitive performance among similar-sized open-source models without compromising general language understanding.</p>
           
           <p>In summary, finance-specific LLMs developed through fine-tuning or training from scratch show significant improvements in domain-specific tasks, underscoring the importance of domain adaptation and the potential for further enhancements with high-quality finance-specific datasets.</p>
           
@@ -154,20 +154,20 @@
           <p>LLMs act as trader agents making direct trading decisions by analyzing external data like news, financial reports, and stock prices. Proposed architectures include news-driven, reasoning-driven, and reinforcement learning (RL)-driven agents.</p>
           
           <strong>News-Driven Agents</strong>
-          <p>News-driven architectures integrate stock news and macroeconomic updates into LLM prompts to predict stock price movements. Studies evaluating both closed-source models (e.g., GPT-3.5, GPT-4) and open-source LLMs (e.g., Qwen <cite>Bai et al., 2023</cite>, Baichuan <cite>Yang et al., 2023</cite>) in financial sentiment analysis have shown the effectiveness of simple long-short strategies based on sentiment scores <cite>Lopezlira et al., 2023</cite>. Further research on fine-tuned LLMs like FinGPT and OPT demonstrates improved performance through domain-specific alignment <cite>Unveiling et al.</cite>, <cite>Sentitrade et al.</cite>. Advanced methods involve summarizing news data and reasoning about their relationship with stock prices <cite>Beatunveiling et al.</cite>, <cite>Wang et al., 2024</cite>.</p>
+          <p>News-driven architectures integrate stock news and macroeconomic updates into LLM prompts to predict stock price movements. Studies evaluating both closed-source models (e.g., GPT-3.5, GPT-4) and open-source LLMs (e.g., Qwen, Baichuan) in financial sentiment analysis have shown the effectiveness of simple long-short strategies based on sentiment scores. Further research on fine-tuned LLMs like FinGPT and OPT demonstrates improved performance through domain-specific alignment. Advanced methods involve summarizing news data and reasoning about their relationship with stock prices.</p>
           
           <strong>Reasoning-Driven Agents</strong>
-          <p>Reasoning-driven agents enhance trading decisions through mechanisms like reflection and debate. Reflection-driven agents, such as FinMem <cite>FinMem et al.</cite> and FinAgent <cite>MultimodalFinMem et al.</cite>, use layered memorization and multimodal data to summarize inputs into memories, inform decisions, and incorporate technical indicators, achieving superior backtest performance while mitigating hallucinations <cite>Ji et al., 2023</cite>. Debate-driven agents, like those in heterogeneous frameworks <cite>Xing et al., 2024</cite> and TradingGPT <cite>Li et al., 2023</cite>, enhance reasoning and factual validity by employing LLM debates among agents with different roles, improving sentiment classification and increasing robustness in trading decisions.</p>
+          <p>Reasoning-driven agents enhance trading decisions through mechanisms like reflection and debate. Reflection-driven agents, such as FinMem and FinAgent, use layered memorization and multimodal data to summarize inputs into memories, inform decisions, and incorporate technical indicators, achieving superior backtest performance while mitigating hallucinations. Debate-driven agents, like those in heterogeneous frameworks and TradingGPT, enhance reasoning and factual validity by employing LLM debates among agents with different roles, improving sentiment classification and increasing robustness in trading decisions.</p>
           
           <strong>Reinforcement Learning-Driven Agents</strong>
-          <p>Reinforcement learning methods align LLM outputs with expected behaviors, using backtesting as rewards. SEP <cite>Koa, 2024</cite> employs RL with memorization and reflection to refine LLM predictions based on market history. Classical RL methods are also used in trading frameworks that integrate LLM-generated embeddings with stock features, trained via algorithms like Proximal Policy Optimization (PPO) <cite>Ding et al., 2023</cite>, <cite>PPO, Year</cite>.</p>
+          <p>Reinforcement learning methods align LLM outputs with expected behaviors, using backtesting as rewards. SEP employs RL with memorization and reflection to refine LLM predictions based on market history. Classical RL methods are also used in trading frameworks that integrate LLM-generated embeddings with stock features, trained via algorithms like Proximal Policy Optimization (PPO).</p>
         </div>
         
         <h3 class="title is-4">LLMs as Alpha Miners</h3>
         <div class="content has-text-justified">
-          <p>LLMs are also used to generate alpha factors instead of making direct trading decisions. QuantAgent <cite>Wang et al., 2023</cite> demonstrates this by leveraging LLMs to produce alpha factors through an inner-loop and outer-loop architecture. In the inner loop, a writer agent generates a script from a trader's idea, while a judge agent provides feedback. In the outer loop, the code is tested in the real market, and trading results enhance the judge agent. This approach enables progressive approximation of optimal behavior.</p>
+          <p>LLMs are also used to generate alpha factors instead of making direct trading decisions. QuantAgent demonstrates this by leveraging LLMs to produce alpha factors through an inner-loop and outer-loop architecture. In the inner loop, a writer agent generates a script from a trader's idea, while a judge agent provides feedback. In the outer loop, the code is tested in the real market, and trading results enhance the judge agent. This approach enables progressive approximation of optimal behavior.</p>
           
-          <p>Subsequent research, such as AlphaGPT <cite>Wang et al., 2023</cite>, proposes a human-in-the-loop framework for alpha mining with a similar architecture. Both studies showcase the effectiveness of LLM-powered alpha mining systems, highlighting their potential in automating and accelerating the development of trading strategies by generating and refining alpha factors.</p>
+          <p>Subsequent research, such as AlphaGPT, proposes a human-in-the-loop framework for alpha mining with a similar architecture. Both studies showcase the effectiveness of LLM-powered alpha mining systems, highlighting their potential in automating and accelerating the development of trading strategies by generating and refining alpha factors.</p>
         </div>
       </div>
     </div>
@@ -263,7 +263,7 @@
             
             <p>By offering oversight and guidance, the Risk Management Team helps maintain the firm's financial stability and protect against adverse market events. They play a crucial role in safeguarding assets and ensuring sustainable long-term performance.</p>
             
-            <p>All agents in <strong>TradingAgents</strong> follow the ReAct prompting framework <cite>Yao et al., 2023</cite>, which synergizes reasoning and acting. The environment state is shared and monitored by the agents, enabling them to take context-appropriate actions such as conducting research, executing trades, engaging in debates, or managing risks. This design ensures a collaborative, dynamic decision-making process reflective of real-world trading systems.</p>
+            <p>All agents in <strong>TradingAgents</strong> follow the ReAct prompting framework, which synergizes reasoning and acting. The environment state is shared and monitored by the agents, enabling them to take context-appropriate actions such as conducting research, executing trades, engaging in debates, or managing risks. This design ensures a collaborative, dynamic decision-making process reflective of real-world trading systems.</p>
           </div>
         </div>
       </div>
@@ -278,7 +278,7 @@
         <h2 class="title is-3">TradingAgents: Agent Workflow</h2>
         <div class="content has-text-justified">
           <h3 class="title is-4">Communication Protocol</h3>
-          <p>Most existing LLM-based agent frameworks use natural language as the primary communication interface, typically through structured message histories or collections of agent-generated messages <cite>Fatouros et al., 2024</cite>, <cite>Li et al., 2023</cite>, <cite>Yang et al., 2024</cite>, <cite>Yang et al., 2023</cite>. However, relying solely on natural language often proves insufficient for solving complex, long-term tasks that require extensive planning horizons. In such cases, pure natural language communication can resemble a game of telephone—over multiple iterations, initial information may be forgotten or distorted due to context length limitations and an overload of text that obscures critical earlier details <cite>Hong et al., 2024</cite>. To address this limitation, we draw inspiration from frameworks like MetaGPT, which adopt a structured approach to communication. Our model introduces a structured communication protocol to govern agent interactions. By clearly defining each agent's state, we ensure that each role only extracts or queries the necessary information, processes it, and returns a completed report. This streamlined approach reduces unnecessary steps, lowers the risk of message corruption, and keeps interactions focused and efficient, even in complex, long-horizon tasks.</p>
+          <p>Most existing LLM-based agent frameworks use natural language as the primary communication interface, typically through structured message histories or collections of agent-generated messages. However, relying solely on natural language often proves insufficient for solving complex, long-term tasks that require extensive planning horizons. In such cases, pure natural language communication can resemble a game of telephone—over multiple iterations, initial information may be forgotten or distorted due to context length limitations and an overload of text that obscures critical earlier details. To address this limitation, we draw inspiration from frameworks like MetaGPT, which adopt a structured approach to communication. Our model introduces a structured communication protocol to govern agent interactions. By clearly defining each agent's state, we ensure that each role only extracts or queries the necessary information, processes it, and returns a completed report. This streamlined approach reduces unnecessary steps, lowers the risk of message corruption, and keeps interactions focused and efficient, even in complex, long-horizon tasks.</p>
           
           <h3 class="title is-4">Types of Agent Interactions</h3>
           <p>In contrast to previous multi-agent trading frameworks, which rely heavily on natural language dialogue, <strong>TradingAgents</strong> agents communicate primarily through structured documents and diagrams. These documents encapsulate the agents' insights in concise, well-organized reports that preserve essential content while avoiding irrelevant information. By utilizing structured reports, agents can query necessary details directly from the global state, eliminating the need for lengthy conversations that risk diluting information, extending the message state indefinitely, and causing data loss. The types of documents and the information they contain are detailed below:</p>
@@ -288,7 +288,7 @@
             <li><strong>Traders</strong>: Traders review and analyze the reports from the analysts, carefully deliberating to produce clear decision signals. They accompany these decisions with detailed reports explaining their rationale and supporting evidence, which are later utilized by the risk management team.</li>
           </ul>
           
-          <p>Agents engage in natural language dialogue exclusively during agent-to-agent conversations and debates. These concise, focused discussions have been shown to promote deeper reasoning and integrate diverse perspectives, enabling more balanced decisions in complex, long-horizon scenarios—a method particularly relevant to the intricate environment of trading <cite>Du et al., 2023</cite>. This approach seamlessly integrates with our structured framework, as the conversation state is recorded as a structured entry within the overall agent state. The types of communication in these scenarios are detailed below:</p>
+          <p>Agents engage in natural language dialogue exclusively during agent-to-agent conversations and debates. These concise, focused discussions have been shown to promote deeper reasoning and integrate diverse perspectives, enabling more balanced decisions in complex, long-horizon scenarios—a method particularly relevant to the intricate environment of trading. This approach seamlessly integrates with our structured framework, as the conversation state is recorded as a structured entry within the overall agent state. The types of communication in these scenarios are detailed below:</p>
           
           <ul>
             <li><strong>Researcher Team</strong>: Each researcher agent queries the global agent state for analyst reports and carefully forms their opinion. Two researchers represent opposing perspectives: one bullish and one bearish. They engage in natural language dialogue for $n$ rounds, as determined by the debate facilitator agent. At the conclusion, the facilitator reviews the debate history, selects the prevailing perspective, and records it as a structured entry in the communication protocol.</li>
@@ -297,7 +297,7 @@
           </ul>
           
           <h3 class="title is-4">Backbone LLMs</h3>
-          <p>To meet the diverse complexity and speed demands of tasks in our framework, we strategically select Large Language Models (LLMs) based on their strengths. Quick-thinking models, such as <code>gpt-4o-mini</code> and <code>gpt-4o</code>, efficiently handle fast, low-depth tasks like summarization, data retrieval, and converting tabular data to text <cite>OpenAI, 2024</cite>. In contrast, deep-thinking models like <code>o1-preview</code> excel in reasoning-intensive tasks such as decision-making, evidence-based report writing, and data analysis. These models leverage their architectures for multi-round reasoning, producing logically sound, in-depth insights <cite>Zhong et al., 2024</cite>, <cite>Wang et al., 2024</cite>, <cite>OpenAI, 2024</cite>. Additionally, we prioritize models with proven reliability and scalability to ensure optimal performance across various market conditions. We also employ auxiliary expert models for specialized tasks like sentiment analysis.</p>
+          <p>To meet the diverse complexity and speed demands of tasks in our framework, we strategically select Large Language Models (LLMs) based on their strengths. Quick-thinking models, such as <code>gpt-4o-mini</code> and <code>gpt-4o</code>, efficiently handle fast, low-depth tasks like summarization, data retrieval, and converting tabular data to text. In contrast, deep-thinking models like <code>o1-preview</code> excel in reasoning-intensive tasks such as decision-making, evidence-based report writing, and data analysis. These models leverage their architectures for multi-round reasoning, producing logically sound, in-depth insights. Additionally, we prioritize models with proven reliability and scalability to ensure optimal performance across various market conditions. We also employ auxiliary expert models for specialized tasks like sentiment analysis.</p>
           
           <p>Specifically, all analyst nodes rely on deep-thinking models to ensure robust analysis, while quick-thinking models handle data retrieval from APIs and tools for efficiency. Researchers and traders use deep-thinking models to generate valuable insights and support well-informed decisions. By aligning the choice of LLMs with the specific requirements of each task, our framework achieves a balance between efficiency and depth of reasoning, which is crucial for effective trading strategies.</p>
           
@@ -363,42 +363,92 @@
           <table class="table is-striped is-fullwidth is-centered">
             <thead>
               <tr>
-                <th>Metric</th>
-                <th colspan="3">RNA Sequence</th>
-                <th colspan="3">Modality Fusion</th>
-                <th colspan="3">RNA-GPT</th>
+                <th>Categories</th>
+                <th>Models</th>
+                <th colspan="4">AAPL</th>
+                <th></th>
+                <th colspan="4">GOOGL</th>
+                <th></th>
+                <th colspan="4">AMZN</th>
               </tr>
               <tr>
                 <th></th>
-                <th>S<sub>BERT</sub></th>
-                <th>S<sub>Pub</sub></th>
-                <th>S<sub>GPT</sub></th>
-                <th>S<sub>BERT</sub></th>
-                <th>S<sub>Pub</sub></th>
-                <th>S<sub>GPT</sub></th>
-                <th>S<sub>BERT</sub></th>
-                <th>S<sub>Pub</sub></th>
-                <th>S<sub>GPT</sub></th>
+                <th></th>
+                <th>CR%↑</th>
+                <th>ARR%↑</th>
+                <th>SR↑</th>
+                <th>MDD%↓</th>
+                <th></th>
+                <th>CR%↑</th>
+                <th>ARR%↑</th>
+                <th>SR↑</th>
+                <th>MDD%↓</th>
+                <th></th>
+                <th>CR%↑</th>
+                <th>ARR%↑</th>
+                <th>SR↑</th>
+                <th>MDD%↓</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Precision</strong></td>
-                <td>0.7372</td><td>0.5528</td><td>0.5219</td>
-                <td>0.6929</td><td>0.6507</td><td>0.6655</td>
-                <td>0.8602</td><td>0.7384</td><td>0.7848</td>
+                <td>Market</td>
+                <td>B&H</td>
+                <td>-5.23</td><td>-5.09</td><td>-1.29</td><td>11.90</td>
+                <td></td>
+                <td>7.78</td><td>8.09</td><td>1.35</td><td>13.04</td>
+                <td></td>
+                <td>17.1</td><td>17.6</td><td>3.53</td><td>3.80</td>
               </tr>
               <tr>
-                <td><strong>Recall</strong></td>
-                <td>0.7496</td><td>0.5270</td><td>0.5474</td>
-                <td>0.8028</td><td>0.6082</td><td>0.6603</td>
-                <td>0.8404</td><td>0.7208</td><td>0.7561</td>
+                <td rowspan="4">Rule-based</td>
+                <td>MACD</td>
+                <td>-1.49</td><td>-1.48</td><td>-0.81</td><td>4.53</td>
+                <td></td>
+                <td>6.20</td><td>6.26</td><td>2.31</td><td><strong style="color:green;">1.22</strong></td>
+                <td></td>
+                <td>-</td><td>-</td><td>-</td><td>-</td>
               </tr>
               <tr>
-                <td><strong>F1 Score</strong></td>
-                <td>0.7424</td><td>0.5387</td><td>0.5339</td>
-                <td>0.7403</td><td>0.6283</td><td>0.6627</td>
-                <td>0.8494</td><td>0.7293</td><td>0.7700</td>
+                <td>KDJ&RSI</td>
+                <td>2.05</td><td>2.07</td><td>1.64</td><td>1.09</td>
+                <td></td>
+                <td>0.4</td><td>0.4</td><td>0.02</td><td>1.58</td>
+                <td></td>
+                <td>-0.77</td><td>-0.76</td><td>-2.25</td><td>1.08</td>
+              </tr>
+              <tr>
+                <td>ZMR</td>
+                <td>0.57</td><td>0.57</td><td>0.17</td><td><strong style="color:green;">0.86</strong></td>
+                <td></td>
+                <td>-0.58</td><td>0.58</td><td>2.12</td><td>2.34</td>
+                <td></td>
+                <td>-0.77</td><td>-0.77</td><td>-2.45</td><td><strong style="color:green;">0.82</strong></td>
+              </tr>
+              <tr>
+                <td>SMA</td>
+                <td>-3.2</td><td>-2.97</td><td>-1.72</td><td>3.67</td>
+                <td></td>
+                <td>6.23</td><td>6.43</td><td>2.12</td><td>2.34</td>
+                <td></td>
+                <td>11.01</td><td>11.6</td><td>2.22</td><td>3.97</td>
+              </tr>
+              <tr>
+                <td rowspan="1">Ours</td>
+                <td><strong>TradingAgents</strong></td>
+                <td><strong style="color:green;">26.62</strong></td><td><strong style="color:green;">30.5</strong></td><td><strong style="color:green;">8.21</strong></td><td>0.91</td>
+                <td></td>
+                <td><strong style="color:green;">24.36</strong></td><td><strong style="color:green;">27.58</strong></td><td><strong style="color:green;">6.39</strong></td><td>1.69</td>
+                <td></td>
+                <td><strong style="color:green;">23.21</strong></td><td><strong style="color:green;">24.90</strong></td><td><strong style="color:green;">5.60</strong></td><td>2.11</td>
+              </tr>
+              <tr>
+                <td colspan="2">Improvement(%)</td>
+                <td>24.57</td><td>28.43</td><td>6.57</td><td>-</td>
+                <td></td>
+                <td>16.58</td><td>19.49</td><td>4.26</td><td>-</td>
+                <td></td>
+                <td>6.10</td><td>7.30</td><td>2.07</td><td>-</td>
               </tr>
             </tbody>
           </table>
@@ -413,7 +463,7 @@
           <h3 class="title is-4">Explainability</h3>
           <p>A significant drawback of current deep learning methods for trading is their dense and complex architectures, which often render the decisions made by trading agents indecipherable to humans. This challenge, rooted in the broader issue of AI explainability, is particularly critical for trading agents, as they operate in real-world financial markets, often involving substantial sums of money where incorrect decisions can lead to severe consequences and losses.</p>
           
-          <p>In contrast, an LLM-based agentic framework for trading offers a transformative advantage: its operations and decisions are communicated in natural language, making them highly interpretable to humans. To illustrate this, we provide the full trading log of <strong>TradingAgents</strong> for a single day in the Appendix, showcasing its use of the ReAct-style prompting framework <cite>Yao et al., 2023</cite>. Each decision made by the agents is accompanied by detailed reasoning, tool usage, and thought processes, enabling traders to easily understand and debug the system. This transparency empowers traders to fine-tune and adjust the framework to account for factors influencing decisions, offering a significant edge in explainability over traditional deep-learning trading algorithms.</p>
+          <p>In contrast, an LLM-based agentic framework for trading offers a transformative advantage: its operations and decisions are communicated in natural language, making them highly interpretable to humans. To illustrate this, we provide the full trading log of <strong>TradingAgents</strong> for a single day in the Appendix, showcasing its use of the ReAct-style prompting framework. Each decision made by the agents is accompanied by detailed reasoning, tool usage, and thought processes, enabling traders to easily understand and debug the system. This transparency empowers traders to fine-tune and adjust the framework to account for factors influencing decisions, offering a significant edge in explainability over traditional deep-learning trading algorithms.</p>
         </div>
       </div>
     </div>
@@ -440,7 +490,7 @@
           <h4 class="title is-5">Explainability</h4>
           <p>A significant drawback of current deep learning methods for trading is their dense and complex architectures, which often render the decisions made by trading agents indecipherable to humans. This challenge, rooted in the broader issue of AI explainability, is particularly critical for trading agents, as they operate in real-world financial markets, often involving substantial sums of money where incorrect decisions can lead to severe consequences and losses.</p>
           
-          <p>In contrast, an LLM-based agentic framework for trading offers a transformative advantage: its operations and decisions are communicated in natural language, making them highly interpretable to humans. To illustrate this, we provide the full trading log of <strong>TradingAgents</strong> for a single day in the Appendix, showcasing its use of the ReAct-style prompting framework <cite>Yao et al., 2023</cite>. Each decision made by the agents is accompanied by detailed reasoning, tool usage, and thought processes, enabling traders to easily understand and debug the system. This transparency empowers traders to fine-tune and adjust the framework to account for factors influencing decisions, offering a significant edge in explainability over traditional deep-learning trading algorithms.</p>
+          <p>In contrast, an LLM-based agentic framework for trading offers a transformative advantage: its operations and decisions are communicated in natural language, making them highly interpretable to humans. To illustrate this, we provide the full trading log of <strong>TradingAgents</strong> for a single day in the Appendix, showcasing its use of the ReAct-style prompting framework. Each decision made by the agents is accompanied by detailed reasoning, tool usage, and thought processes, enabling traders to easily understand and debug the system. This transparency empowers traders to fine-tune and adjust the framework to account for factors influencing decisions, offering a significant edge in explainability over traditional deep-learning trading algorithms.</p>
         </div>
       </div>
     </div>
@@ -451,23 +501,9 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Results and Analysis</h2>
+        <h2 class="title is-3">Conclusion</h2>
         <div class="content has-text-justified">
-          <h3 class="title is-4">Performance Comparison</h3>
-          
-          <h4 class="title is-5">Cumulative and Annual Returns</h4>
-          <p>Table 1 and Figures (a) and (b) highlight that our method significantly outperforms existing rule-based trading baselines, particularly in profitability, as measured by returns. <strong>TradingAgents</strong> achieves at least a 23.21% cumulative return and 24.90% annual return on the three sampled stocks, outperforming the best-performing baselines by a margin of at least 6.1%. Notably, on the AAPL stock—a particularly challenging case due to market volatility during the testing period—traditional methods struggled, as their patterns failed to generalize to this situation. In contrast, <strong>TradingAgents</strong> excelled even under these adverse conditions, achieving returns exceeding 26% within less than three months.</p>
-          
-          <h4 class="title is-5">Sharpe Ratio</h4>
-          <p>The Sharpe Ratio performance highlights <strong>TradingAgents</strong>' exceptional ability to deliver superior risk-adjusted returns, consistently outperforming all baseline models across AAPL, GOOGL, and AMZN with Sharpe Ratios of at least 5.60—surpassing the next best models by a significant margin of at least 2.07 points. This result underscores <strong>TradingAgents</strong>' effectiveness in balancing returns against risk, a critical metric for sustainable and predictable investment growth. By excelling over market benchmarks like Buy-and-Hold and advanced strategies such as KDJRSI, SMA, MACD, and ZMR, <strong>TradingAgents</strong> demonstrates its adaptability and robustness in diverse market conditions. Its ability to maximize returns while maintaining controlled risk exposure establishes a solid foundation for multi-agent and debate-based automated trading algorithms.</p>
-          
-          <h4 class="title is-5">Maximum Drawdown</h4>
-          <p>While rule-based baselines demonstrated superior performance in controlling risk, as reflected by their maximum drawdown scores, they fell short in capturing high returns. This trade-off between risk and reward underscores <strong>TradingAgents</strong>' strength as a balanced approach. Despite higher returns being typically associated with higher risks, <strong>TradingAgents</strong> maintained a relatively low maximum drawdown compared to many baselines. Its effective risk-control mechanisms, facilitated by the debates among risk-control agents, ensured that the maximum drawdown remained within a manageable limit, not exceeding 2%. This demonstrates <strong>TradingAgents</strong>' capability to strike a robust balance between maximizing returns and managing risk effectively.</p>
-          
-          <h4 class="title is-5">Explainability</h4>
-          <p>A significant drawback of current deep learning methods for trading is their dense and complex architectures, which often render the decisions made by trading agents indecipherable to humans. This challenge, rooted in the broader issue of AI explainability, is particularly critical for trading agents, as they operate in real-world financial markets, often involving substantial sums of money where incorrect decisions can lead to severe consequences and losses.</p>
-          
-          <p>In contrast, an LLM-based agentic framework for trading offers a transformative advantage: its operations and decisions are communicated in natural language, making them highly interpretable to humans. To illustrate this, we provide the full trading log of <strong>TradingAgents</strong> for a single day in the Appendix, showcasing its use of the ReAct-style prompting framework <cite>Yao et al., 2023</cite>. Each decision made by the agents is accompanied by detailed reasoning, tool usage, and thought processes, enabling traders to easily understand and debug the system. This transparency empowers traders to fine-tune and adjust the framework to account for factors influencing decisions, offering a significant edge in explainability over traditional deep-learning trading algorithms.</p>
+          <p>In this paper, we introduced <strong>TradingAgents</strong>, an LLM-agent-powered stock trading framework that simulates a realistic trading firm environment with multiple specialized agents engaging in agentic debates and conversations. Leveraging the capabilities of LLMs to process and analyze diverse data sources, the framework enables informed trading decisions while utilizing multi-agent interactions to enhance performance through comprehensive reasoning and debate before acting. By integrating agents with distinct roles and risk profiles, along with a reflective agent and a dedicated risk management team, <strong>TradingAgents</strong> significantly improves trading outcomes and risk management compared to baseline models. Additionally, the collaborative nature of these agents ensures adaptability to varying market conditions. Extensive experiments demonstrate that <strong>TradingAgents</strong> outperforms traditional trading strategies and baselines in cumulative return, Sharpe ratio, and other critical metrics. Future work will focus on deploying the framework in a live trading environment, expanding agent roles, and incorporating real-time data processing to enhance performance further.</p>
         </div>
       </div>
     </div>
