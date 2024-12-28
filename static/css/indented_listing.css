@@ -1,0 +1,53 @@
+.list1 ol {
+  margin-left: 20px; /* 调整有序列表项的左边距 */
+}
+
+.list1 ul {
+  margin-left: 40px; /* 调整无序子列表的左边距 */
+  list-style-type: disc; /* 设置无序列表项前的符号为黑点 */
+}
+
+.list1 li {
+  margin-bottom: 10px; /* 设置每个列表项的下边距，增大行间距 */
+}
+
+/* list2 的样式 */
+.list2 ol {
+  margin-left: 10px;
+  list-style-position: inside; /* 将列表标记放置在文本内侧 */
+  list-style-type: upper-roman; /* 使用罗马数字 */
+  font-weight: bold; /* 列表项加粗 */
+}
+
+.list2 ol li {
+  margin-bottom: 10px; /* 列表项间距 */
+}
+
+.list2 ul {
+  margin-left: 40px;
+  list-style-type: decimal; /* 使用阿拉伯数字 */
+  font-weight: normal; /* 列表项正常字体 */
+}
+
+.list2 ul li {
+  margin-bottom: 5px; /* 列表项间距较小 */
+}
+
+.phase-title {
+  font-weight: bold; /* 标题加粗 */
+}
+
+.phase-description {
+  font-weight: normal; /* 描述为正常字体 */
+  display: inline; /* 保持标题与描述在同一行 */
+}
+
+.text-spacing {
+  height: 10px; /* 更改此值以调整间距大小 */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
