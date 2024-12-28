@@ -2,4 +2,4 @@
 
 > MARW Workshop, AAAI 2025
 > 
-> Homepage: https://TradingAgents.github.io/
+> Homepage: https://TradingAgents-AI.github.io/

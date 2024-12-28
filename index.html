@@ -114,7 +114,7 @@
           
           <strong>Lack of Realistic Organizational Modeling:</strong> Many frameworks fail to capture the complex interactions between agents that mimic the structure of real-world trading firms <cite>Li et al., 2023</cite>, <cite>Wang et al., 2024</cite>, <cite>Yu et al., 2024</cite>. Instead, they focus narrowly on specific task performance, often disconnected from the organizational workflows and established human operating procedures proven effective in trading. This limits their ability to fully replicate and benefit from real-world trading practices.
           
-          <strong>Inefficient Communication Interfaces:</strong> Most existing systems use natural language as the primary communication medium, typically relying on message histories or an unstructured pool of information for decision-making <cite>Park et al., 2023</cite>, <cite>Qian et al., 2024</cite>. This approach often results in a "telephone effect", where details are lost, and states become corrupted as conversations lengthen. Agents struggle to maintain context and track extended histories while filtering out irrelevant information from previous decision steps, diminishing their effectiveness in handling complex, dynamic tasks. Additionally, the unstructured pool-of-information approach lacks clear instructions, forcing logical communication and information exchange between agents to depend solely on retrieval, which disrupts the relational integrity of the data.
+          <strong>Inefficient Communication Interfaces:</strong> Most existing systems use natural language as the primary communication medium, typically relying on message histories or an unstructured pool of information for decision-making <cite>Park et al., 2023</cite>, <cite>Qian et al., 2024</cite>. This approach often results in a "telephone effect", where details are lost, and states become corrupted as conversations lengthen. Agents struggle to maintain context and track extended histories while filtering out irrelevant information from previous decision steps, diminishing their effectiveness in handling complex, dynamic tasks. Additionally, the unstructured pool-of-information approach lacks clear instructions, forcing logical communication and information exchange between agents to depend solely on retrieval, which disrupts the relational integrity of the data.</p>
           
           <p>In this work, we address these key limitations of existing models by introducing a system that overcomes these challenges. First, our framework bridges the gap by simulating the multi-agent decision-making processes typical of professional trading teams. It incorporates specialized agents tailored to distinct aspects of trading, inspired by the organizational structure of real-world trading firms. These agents include fundamental analysts, sentiment/news analysts, technical analysts, and traders with diverse risk profiles. Bullish and bearish debaters evaluate market conditions to provide balanced recommendations, while a risk management team ensures that exposures remain within acceptable limits. Second, to enhance communication, our framework combines structured outputs for control, clarity, and reasoning with natural language dialogue to facilitate effective debate and collaboration among agents. This hybrid approach ensures both precision and flexibility in decision-making.</p>
           
@@ -316,11 +316,6 @@
         <div class="content has-text-justified">
           <p>In this section, we describe the experimental setup used to evaluate our proposed framework. We also provide detailed descriptions of the evaluation metrics employed to assess performance comprehensively.</p>
           
-          <figure class="image">
-            <img src="./static/images/TradingAgents_Performance.png" alt="Performance Comparison">
-            <figcaption class="has-text-centered"><strong>Table 1:</strong> Performance comparison across all methods using four evaluation metrics. Results highlighted in <strong><span style="color:green;">green</span></strong> represent the best-performing statistic for each model. The improvement row illustrates TradingAgents' performance gains over the top-performing baselines.</figcaption>
-          </figure>
-          
           <h3 class="title is-4">Back Trading</h3>
           <p>To simulate a realistic trading environment, we utilize a multi-asset and multi-modal financial dataset comprising of various stocks such as Apple, Nvidia, Microsoft, Meta, Google, and more. The dataset includes:</p>
           
@@ -351,44 +346,74 @@
           <h3 class="title is-4">Evaluation Metrics</h3>
           
           <figure class="image">
-            <img src="./static/images/TradingAgents_CR_AAPL.png" alt="Cumulative Returns on AAPL">
-            <figcaption class="has-text-centered"><strong>Figure 6:</strong> TradingAgents: Cumulative Returns (CR) and Detailed Transaction History for AAPL.</figcaption>
+            <img src="./static/images/CumulativeReturns_AAPL.png" alt="Cumulative Returns on AAPL">
+            <figcaption class="has-text-centered"><strong>(a)</strong> Cumulative Returns on AAPL</figcaption>
           </figure>
-          
-          <p>To thoroughly evaluate the performance of our <strong>TradingAgents</strong> framework, we use widely recognized metrics to assess the risk management, profitability, and safety of the TradingAgents strategy in comparison to baseline approaches. Here we describe these metrics:</p>
-          
-          <h4 class="title is-5">Cumulative Return (CR)</h4>
-          <p>The cumulative return measures the total return generated over the simulation period. It is calculated as:</p>
-          <p>
-            <strong>CR</strong> = ((V<sub>end</sub> - V<sub>start</sub>) / V<sub>start</sub>) × 100%
-          </p>
-          <p>where V<sub>end</sub> is the portfolio value at the end of the simulation, and V<sub>start</sub> is the initial portfolio value.</p>
-          
-          <h4 class="title is-5">Annualized Return (AR)</h4>
-          <p>The annualized return normalizes the cumulative return over the number of years:</p>
-          <p>
-            <strong>AR</strong> = (((V<sub>end</sub> / V<sub>start</sub>)^(1/N)) - 1) × 100%
-          </p>
-          <p>where N is the number of years in the simulation.</p>
-          
-          <h4 class="title is-5">Sharpe Ratio (SR)</h4>
-          <p>The Sharpe ratio measures risk-adjusted return by comparing a portfolio's excess return over the risk-free rate to its volatility:</p>
-          <p>
-            <strong>SR</strong> = (R̄ - R<sub>f</sub>) / σ
-          </p>
-          <p>where R̄ is the average portfolio return, R<sub>f</sub> is the risk-free rate (e.g., yield of 3-month Treasury bills), and σ is the standard deviation of the portfolio returns.</p>
-          
-          <h4 class="title is-5">Maximum Drawdown (MDD)</h4>
-          <p>Maximum drawdown measures the largest peak-to-trough decline in the portfolio value:</p>
-          <p>
-            <strong>MDD</strong> = max<sub>t ∈ [0, T]</sub> ((Peak<sub>t</sub> - Trough<sub>t</sub>) / Peak<sub>t</sub>) × 100%
-          </p>
           
           <figure class="image">
-            <img src="./static/images/TradingAgents_ROUGE_AAPL.png" alt="ROUGE Score Comparison">
-            <figcaption class="has-text-centered"><strong>Figure 7:</strong> ROUGE Score Comparison</figcaption>
+            <img src="./static/images/TradingAgents_Transactions_AAPL.png" alt="TradingAgents Transactions for AAPL">
+            <figcaption class="has-text-centered"><strong>(b)</strong> TradingAgents Transactions for AAPL.<br>Green / Red Arrows for Long / Short Positions.</figcaption>
           </figure>
           
+          <figure class="image">
+            <img src="./static/images/Performance_Comparison.png" alt="Performance Comparison">
+            <figcaption class="has-text-centered"><strong>Table 1:</strong> Performance comparison across all methods using four evaluation metrics. Results highlighted in <strong style="color:green;">green</strong> represent the best-performing statistic for each model. The improvement row illustrates TradingAgents' performance gains over the top-performing baselines.</figcaption>
+          </figure>
+          
+          <table class="table is-striped is-fullwidth is-centered">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th colspan="3">RNA Sequence</th>
+                <th colspan="3">Modality Fusion</th>
+                <th colspan="3">RNA-GPT</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th>S<sub>BERT</sub></th>
+                <th>S<sub>Pub</sub></th>
+                <th>S<sub>GPT</sub></th>
+                <th>S<sub>BERT</sub></th>
+                <th>S<sub>Pub</sub></th>
+                <th>S<sub>GPT</sub></th>
+                <th>S<sub>BERT</sub></th>
+                <th>S<sub>Pub</sub></th>
+                <th>S<sub>GPT</sub></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Precision</strong></td>
+                <td>0.7372</td><td>0.5528</td><td>0.5219</td>
+                <td>0.6929</td><td>0.6507</td><td>0.6655</td>
+                <td>0.8602</td><td>0.7384</td><td>0.7848</td>
+              </tr>
+              <tr>
+                <td><strong>Recall</strong></td>
+                <td>0.7496</td><td>0.5270</td><td>0.5474</td>
+                <td>0.8028</td><td>0.6082</td><td>0.6603</td>
+                <td>0.8404</td><td>0.7208</td><td>0.7561</td>
+              </tr>
+              <tr>
+                <td><strong>F1 Score</strong></td>
+                <td>0.7424</td><td>0.5387</td><td>0.5339</td>
+                <td>0.7403</td><td>0.6283</td><td>0.6627</td>
+                <td>0.8494</td><td>0.7293</td><td>0.7700</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="has-text-centered"><strong>Table 1:</strong> TradingAgents (<strong>AIS</strong>): Comparison of RNA Sequence (left), Modality Fusion (middle), and TradingAgents (right). Embedding base models are BERT, PubMedBERT, and OpenAI's GPT text-embedding-3-large.</p>
+          
+          <h3 class="title is-4">Sharpe Ratio</h3>
+          <p>The Sharpe Ratio performance highlights <strong>TradingAgents</strong>' exceptional ability to deliver superior risk-adjusted returns, consistently outperforming all baseline models across AAPL, GOOGL, and AMZN with Sharpe Ratios of at least 5.60—surpassing the next best models by a significant margin of at least 2.07 points. This result underscores <strong>TradingAgents</strong>' effectiveness in balancing returns against risk, a critical metric for sustainable and predictable investment growth. By excelling over market benchmarks like Buy-and-Hold and advanced strategies such as KDJRSI, SMA, MACD, and ZMR, <strong>TradingAgents</strong> demonstrates its adaptability and robustness in diverse market conditions. Its ability to maximize returns while maintaining controlled risk exposure establishes a solid foundation for multi-agent and debate-based automated trading algorithms.</p>
+          
+          <h3 class="title is-4">Maximum Drawdown</h3>
+          <p>While rule-based baselines demonstrated superior performance in controlling risk, as reflected by their maximum drawdown scores, they fell short in capturing high returns. This trade-off between risk and reward underscores <strong>TradingAgents</strong>' strength as a balanced approach. Despite higher returns being typically associated with higher risks, <strong>TradingAgents</strong> maintained a relatively low maximum drawdown compared to many baselines. Its effective risk-control mechanisms, facilitated by the debates among risk-control agents, ensured that the maximum drawdown remained within a manageable limit, not exceeding 2%. This demonstrates <strong>TradingAgents</strong>' capability to strike a robust balance between maximizing returns and managing risk effectively.</p>
+          
+          <h3 class="title is-4">Explainability</h3>
+          <p>A significant drawback of current deep learning methods for trading is their dense and complex architectures, which often render the decisions made by trading agents indecipherable to humans. This challenge, rooted in the broader issue of AI explainability, is particularly critical for trading agents, as they operate in real-world financial markets, often involving substantial sums of money where incorrect decisions can lead to severe consequences and losses.</p>
+          
+          <p>In contrast, an LLM-based agentic framework for trading offers a transformative advantage: its operations and decisions are communicated in natural language, making them highly interpretable to humans. To illustrate this, we provide the full trading log of <strong>TradingAgents</strong> for a single day in the Appendix, showcasing its use of the ReAct-style prompting framework <cite>Yao et al., 2023</cite>. Each decision made by the agents is accompanied by detailed reasoning, tool usage, and thought processes, enabling traders to easily understand and debug the system. This transparency empowers traders to fine-tune and adjust the framework to account for factors influencing decisions, offering a significant edge in explainability over traditional deep-learning trading algorithms.</p>
         </div>
       </div>
     </div>
@@ -404,7 +429,7 @@
           <h3 class="title is-4">Performance Comparison</h3>
           
           <h4 class="title is-5">Cumulative and Annual Returns</h4>
-          <p>Table 1 and Figures 6, 7, and 8 highlight that our method significantly outperforms existing rule-based trading baselines, particularly in profitability, as measured by returns. <strong>TradingAgents</strong> achieves at least a 23.21% cumulative return and 24.90% annual return on the three sampled stocks, outperforming the best-performing baselines by a margin of at least 6.1%. Notably, on the AAPL stock—a particularly challenging case due to market volatility during the testing period—traditional methods struggled, as their patterns failed to generalize to this situation. In contrast, <strong>TradingAgents</strong> excelled even under these adverse conditions, achieving returns exceeding 26% within less than three months.</p>
+          <p>Table 1 and Figures (a) and (b) highlight that our method significantly outperforms existing rule-based trading baselines, particularly in profitability, as measured by returns. <strong>TradingAgents</strong> achieves at least a 23.21% cumulative return and 24.90% annual return on the three sampled stocks, outperforming the best-performing baselines by a margin of at least 6.1%. Notably, on the AAPL stock—a particularly challenging case due to market volatility during the testing period—traditional methods struggled, as their patterns failed to generalize to this situation. In contrast, <strong>TradingAgents</strong> excelled even under these adverse conditions, achieving returns exceeding 26% within less than three months.</p>
           
           <h4 class="title is-5">Sharpe Ratio</h4>
           <p>The Sharpe Ratio performance highlights <strong>TradingAgents</strong>' exceptional ability to deliver superior risk-adjusted returns, consistently outperforming all baseline models across AAPL, GOOGL, and AMZN with Sharpe Ratios of at least 5.60—surpassing the next best models by a significant margin of at least 2.07 points. This result underscores <strong>TradingAgents</strong>' effectiveness in balancing returns against risk, a critical metric for sustainable and predictable investment growth. By excelling over market benchmarks like Buy-and-Hold and advanced strategies such as KDJRSI, SMA, MACD, and ZMR, <strong>TradingAgents</strong> demonstrates its adaptability and robustness in diverse market conditions. Its ability to maximize returns while maintaining controlled risk exposure establishes a solid foundation for multi-agent and debate-based automated trading algorithms.</p>
@@ -426,9 +451,23 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Conclusion</h2>
+        <h2 class="title is-3">Results and Analysis</h2>
         <div class="content has-text-justified">
-          <p>In this paper, we introduced <strong>TradingAgents</strong>, an LLM-agent-powered stock trading framework that simulates a realistic trading firm environment with multiple specialized agents engaging in agentic debates and conversations. Leveraging the capabilities of LLMs to process and analyze diverse data sources, the framework enables informed trading decisions while utilizing multi-agent interactions to enhance performance through comprehensive reasoning and debate before acting. By integrating agents with distinct roles and risk profiles, along with a reflective agent and a dedicated risk management team, <strong>TradingAgents</strong> significantly improves trading outcomes and risk management compared to baseline models. Additionally, the collaborative nature of these agents ensures adaptability to varying market conditions. Extensive experiments demonstrate that <strong>TradingAgents</strong> outperforms traditional trading strategies and baselines in cumulative return, Sharpe ratio, and other critical metrics. Future work will focus on deploying the framework in a live trading environment, expanding agent roles, and incorporating real-time data processing to enhance performance further.</p>
+          <h3 class="title is-4">Performance Comparison</h3>
+          
+          <h4 class="title is-5">Cumulative and Annual Returns</h4>
+          <p>Table 1 and Figures (a) and (b) highlight that our method significantly outperforms existing rule-based trading baselines, particularly in profitability, as measured by returns. <strong>TradingAgents</strong> achieves at least a 23.21% cumulative return and 24.90% annual return on the three sampled stocks, outperforming the best-performing baselines by a margin of at least 6.1%. Notably, on the AAPL stock—a particularly challenging case due to market volatility during the testing period—traditional methods struggled, as their patterns failed to generalize to this situation. In contrast, <strong>TradingAgents</strong> excelled even under these adverse conditions, achieving returns exceeding 26% within less than three months.</p>
+          
+          <h4 class="title is-5">Sharpe Ratio</h4>
+          <p>The Sharpe Ratio performance highlights <strong>TradingAgents</strong>' exceptional ability to deliver superior risk-adjusted returns, consistently outperforming all baseline models across AAPL, GOOGL, and AMZN with Sharpe Ratios of at least 5.60—surpassing the next best models by a significant margin of at least 2.07 points. This result underscores <strong>TradingAgents</strong>' effectiveness in balancing returns against risk, a critical metric for sustainable and predictable investment growth. By excelling over market benchmarks like Buy-and-Hold and advanced strategies such as KDJRSI, SMA, MACD, and ZMR, <strong>TradingAgents</strong> demonstrates its adaptability and robustness in diverse market conditions. Its ability to maximize returns while maintaining controlled risk exposure establishes a solid foundation for multi-agent and debate-based automated trading algorithms.</p>
+          
+          <h4 class="title is-5">Maximum Drawdown</h4>
+          <p>While rule-based baselines demonstrated superior performance in controlling risk, as reflected by their maximum drawdown scores, they fell short in capturing high returns. This trade-off between risk and reward underscores <strong>TradingAgents</strong>' strength as a balanced approach. Despite higher returns being typically associated with higher risks, <strong>TradingAgents</strong> maintained a relatively low maximum drawdown compared to many baselines. Its effective risk-control mechanisms, facilitated by the debates among risk-control agents, ensured that the maximum drawdown remained within a manageable limit, not exceeding 2%. This demonstrates <strong>TradingAgents</strong>' capability to strike a robust balance between maximizing returns and managing risk effectively.</p>
+          
+          <h4 class="title is-5">Explainability</h4>
+          <p>A significant drawback of current deep learning methods for trading is their dense and complex architectures, which often render the decisions made by trading agents indecipherable to humans. This challenge, rooted in the broader issue of AI explainability, is particularly critical for trading agents, as they operate in real-world financial markets, often involving substantial sums of money where incorrect decisions can lead to severe consequences and losses.</p>
+          
+          <p>In contrast, an LLM-based agentic framework for trading offers a transformative advantage: its operations and decisions are communicated in natural language, making them highly interpretable to humans. To illustrate this, we provide the full trading log of <strong>TradingAgents</strong> for a single day in the Appendix, showcasing its use of the ReAct-style prompting framework <cite>Yao et al., 2023</cite>. Each decision made by the agents is accompanied by detailed reasoning, tool usage, and thought processes, enabling traders to easily understand and debug the system. This transparency empowers traders to fine-tune and adjust the framework to account for factors influencing decisions, offering a significant edge in explainability over traditional deep-learning trading algorithms.</p>
         </div>
       </div>
     </div>
