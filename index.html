@@ -78,6 +78,7 @@
             <div class="publication-links">
               <span class="link-block"><a href="https://arxiv.org/abs/XXXX.XXXXX" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span></a></span>
               <span class="link-block"><a href="https://github.com/Yijia-Xiao/TradingAgents" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fab fa-github"></i></span><span>Code</span></a></span>
+              <!-- Add more links if available -->
             </div>
           </div>
         </div>
@@ -92,7 +93,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <p>Societies of LLM-powered agents have advanced automated problem-solving, particularly in finance. Yet, most frameworks don’t replicate the collaborative workflows of real trading firms. <strong>TradingAgents</strong> addresses this gap by assigning specialized LLM-powered agents—analysts, researchers, traders, and risk managers—to simulate a dynamic, team-based environment. These agents collaborate through debates, structured outputs, and risk checks. Experiments show that <strong>TradingAgents</strong> significantly improves key performance metrics over baseline models, highlighting the promise of multi-agent LLM frameworks in financial trading.</p>
+          <p>We introduce <strong>TradingAgents</strong>, a novel stock trading framework inspired by trading firms, utilizing multiple LLM-powered agents with specialized roles such as fundamental, sentiment, and technical analysts, as well as traders with diverse risk profiles. The system features Bull and Bear researchers evaluating market conditions, a risk management team overseeing exposure, and traders integrating insights from debates and historical data to make informed decisions. This collaborative, dynamic environment enhances trading performance, as demonstrated by our comprehensive experiments showing significant improvements in cumulative returns, Sharpe ratio, and maximum drawdown compared to baseline models. Our results highlight the effectiveness of multi-agent LLM frameworks in financial trading.</p>
         </div>
       </div>
     </div>
@@ -105,53 +106,17 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
-          <p>Autonomous agents equipped with Large Language Models (LLMs) can mimic human problem-solving in finance—an intricate domain shaped by fundamentals, market sentiment, and macro factors. While deep learning models have long struggled with explainability, LLM-based systems show promise by pairing structured reasoning with interpretability. However, current solutions often lack organizational realism and rely on purely conversational interfaces susceptible to context loss.</p>
-          <p><strong>TradingAgents</strong> fills these gaps by emulating the multi-agent decision-making processes of trading firms. The framework includes fundamental, sentiment, news, and technical analysts, along with bullish and bearish researchers, traders, and a risk management team. They coordinate using structured documents and concise dialogues. Our architecture leverages specialized LLM roles, combining clarity with deeper debates. Through extensive evaluations, <strong>TradingAgents</strong> delivers robust performance across multiple assets, validating the importance of multi-agent collaboration for real-world trading systems.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Work</h2>
-        
-        <h3 class="title is-4">LLMs as Financial Assistants</h3>
-        <div class="content has-text-justified">
-          <p>Specialized LLMs in finance have improved domain understanding via fine-tuning or from-scratch training on financial corpora (e.g., FinGPT, BloombergGPT). These models often excel at classification tasks but face challenges in generative quality compared to powerful general-purpose models like GPT-4.</p>
+          <p>Autonomous agents powered by Large Language Models (LLMs) revolutionize decision-making by mimicking human workflows across various domains, including finance. Unlike traditional algorithmic trading systems that rely on quantitative models, LLMs excel in processing and understanding natural language data, making them adept at analyzing news, reports, and social media sentiment. Recent multi-agent LLM frameworks in finance have shown promise in creating explainable AI systems, enhancing decision transparency and reasoning.</p>
           
-          <strong>Fine-Tuned LLMs for Finance</strong>
-          <p>Fine-tuning boosts performance on tasks such as financial sentiment analysis. Examples include PIXIU (FinMA) and Instruct-FinGPT. They outperform generic open-source LLMs but still lag behind top-tier proprietary models in some generative tasks.</p>
+          <p>However, existing applications face two main challenges:</p>
           
-          <strong>Finance LLMs Trained from Scratch</strong>
-          <p>Models like BloombergGPT and XuanYuan 2.0 blend general corpora with specialized financial data, delivering strong domain-specific results. While they may not match larger closed-source models, they remain competitive among open-source counterparts.</p>
+          <strong>Organizational Modeling:</strong> Current frameworks often overlook the complex interactions that mirror real trading firms, focusing instead on isolated tasks. This limits their ability to replicate effective trading practices.
           
-          <figure class="image">
-            <img src="./static/images/schema.png" alt="TradingAgents Overall Framework Organization">
-            <figcaption class="has-text-centered"><strong>Figure 1:</strong> TradingAgents Overall Framework Organization. <em>I. Analysts Team</em>: Four analysts concurrently gather relevant market information. <em>II. Research Team</em>: The team discusses data. <em>III. Trader</em>: Makes final decisions using debates and history. <em>IV. Risk Management Team</em>: Monitors risk. <em>V. Fund Manager</em>: Approves and executes trades.</figcaption>
-          </figure>
-        </div>
-        
-        <h3 class="title is-4">LLMs as Traders</h3>
-        <div class="content has-text-justified">
-          <p>LLMs directly executing trades often rely on news-driven or reasoning-driven prompts, sometimes enhanced by reinforcement learning. Debate and reflection modules help overcome hallucinations and bolster factual accuracy.</p>
+          <strong>Communication Efficiency:</strong> Reliance on unstructured natural language communication leads to information loss and context degradation over lengthy interactions, reducing effectiveness in complex tasks.</p>
           
-          <strong>News-Driven Agents</strong>
-          <p>These agents use market news to gauge sentiment. Both closed-source (GPT-4) and open-source (Qwen) models show promising gains via simple sentiment-driven strategies.</p>
+          <p>Our framework addresses these issues by simulating the multi-agent decision-making processes of professional trading teams. We employ specialized agents with distinct roles inspired by real trading firms, coupled with a structured communication protocol that combines clear, structured outputs with natural language dialogue. This hybrid approach ensures precise and efficient interactions, enabling robust decision-making.</p>
           
-          <strong>Reasoning-Driven Agents</strong>
-          <p>Frameworks like FinMem and TradingGPT integrate multi-round reasoning, reflection, and debates between agents with different stances, enabling more robust trading signals.</p>
-          
-          <strong>Reinforcement Learning-Driven Agents</strong>
-          <p>RL aligns LLM outputs with backtest rewards, often leveraging memorized states and technical signals to refine decision-making.</p>
-        </div>
-        
-        <h3 class="title is-4">LLMs as Alpha Miners</h3>
-        <div class="content has-text-justified">
-          <p>Some frameworks focus on generating alpha factors rather than final trades. Systems like QuantAgent and AlphaGPT iteratively refine alpha scripts through feedback from an LLM-based judge and real-market performance, accelerating systematic strategy development.</p>
+          <p>We validate <strong>TradingAgents</strong> using historical financial data, comparing its performance against several baselines through metrics like cumulative return, Sharpe ratio, and maximum drawdown, demonstrating its superior effectiveness.</p>
         </div>
       </div>
     </div>
@@ -164,28 +129,28 @@
       <div class="column is-full-width">
         <h2 class="title is-3">TradingAgents: Role Specialization</h2>
         <div class="content has-text-justified">
-          <p><strong>TradingAgents</strong> assigns each LLM agent a clear role. This mirrors how real trading firms split responsibilities—e.g., fundamental, sentiment, news, and technical analysts gather data, while researchers balance bullish and bearish arguments. A trader synthesizes these inputs, and risk managers ensure exposures stay within safe limits. This structured approach fosters comprehensive coverage of market signals.</p>
+          <p>Assigning specific roles to LLM agents allows complex trading objectives to be broken down into manageable tasks. Inspired by trading firms, <strong>TradingAgents</strong> features seven distinct roles: Fundamentals Analyst, Sentiment Analyst, News Analyst, Technical Analyst, Researcher, Trader, and Risk Manager. Each agent is equipped with specialized tools and constraints tailored to their function, ensuring comprehensive market analysis and informed decision-making.</p>
           
           <h3 class="title is-4">Analyst Team</h3>
           <div class="content has-text-justified">
-            <p>The analyst team (Figure 2) covers fundamental, sentiment, news, and technical aspects. Each member focuses on different market signals, providing the basis for research and trading decisions.</p>
+            <p>The Analyst Team gathers and analyzes market data across various domains:</p>
+            <ul>
+              <li><strong>Fundamental Analysts:</strong> Assess company fundamentals to identify undervalued or overvalued stocks.</li>
+              <li><strong>Sentiment Analysts:</strong> Analyze social media and public sentiment to gauge market mood.</li>
+              <li><strong>News Analysts:</strong> Evaluate news and macroeconomic indicators to predict market movements.</li>
+              <li><strong>Technical Analysts:</strong> Use technical indicators to forecast price trends and trading opportunities.</li>
+            </ul>
+            <p>Combined, their insights provide a holistic market view, feeding into the Researcher Team for further evaluation.</p>
             
             <figure class="image">
               <img src="./static/images/Analyst.png" alt="TradingAgents Analyst Team" style="width: 65%;">
               <figcaption class="has-text-centered"><strong>Figure 2:</strong> TradingAgents Analyst Team</figcaption>
             </figure>
-            
-            <ul>
-              <li><strong>Fundamental Analysts</strong>: Evaluate intrinsic value via earnings, balance sheets, etc.</li>
-              <li><strong>Sentiment Analysts</strong>: Analyze social media and public sentiment data.</li>
-              <li><strong>News Analysts</strong>: Track macro events, economic indicators, and other critical news.</li>
-              <li><strong>Technical Analysts</strong>: Calculate metrics like MACD/RSI to identify trends and patterns.</li>
-            </ul>
           </div>
           
           <h3 class="title is-4">Researcher Team</h3>
           <div class="content has-text-justified">
-            <p>(Figure 3) Bullish and bearish researchers debate the analysts’ findings, challenging each other’s viewpoints to produce a balanced outcome.</p>
+            <p>The Researcher Team critically evaluates analyst data through a dialectical process involving bullish and bearish perspectives. This debate ensures balanced analysis, identifying both opportunities and risks to inform trading strategies.</p>
             
             <div class="columns">
               <div class="column">
@@ -202,37 +167,48 @@
               </div>
               <div class="column">
                 <figure class="image">
-                  <img src="./static/images/RiskMGMT.png" alt="TradingAgents Risk Management Team and Fund Manager Approval Workflow">
-                  <figcaption class="has-text-centered"><strong>Figure 5:</strong> TradingAgents Risk Management and Fund Manager Workflow</figcaption>
+                  <img src="./static/images/RiskMGMT.png" alt="TradingAgents Risk Management Team Workflow">
+                  <figcaption class="has-text-centered"><strong>Figure 5:</strong> TradingAgents Risk Management Workflow</figcaption>
                 </figure>
               </div>
             </div>
             
             <ul>
-              <li><strong>Bullish Researchers</strong>: Highlight favorable signals and positive growth opportunities.</li>
-              <li><strong>Bearish Researchers</strong>: Emphasize caution, identifying risks or negative signals.</li>
+              <li><strong>Bullish Researchers:</strong> Highlight positive market indicators and growth potential.</li>
+              <li><strong>Bearish Researchers:</strong> Focus on risks and negative market signals.</li>
             </ul>
+            
+            <p>This process ensures a balanced understanding of market conditions, aiding Trader Agents in making informed decisions.</p>
           </div>
           
           <h3 class="title is-4">Trader Agents</h3>
           <div class="content has-text-justified">
-            <p>(Figure 4) Trader agents synthesize all insights to form buy/sell decisions, weighing returns against potential downside.</p>
+            <p>Trader Agents execute decisions based on comprehensive analyses. They evaluate insights from analysts and researchers to determine optimal trading actions, balancing returns and risks in a dynamic market environment.</p>
+            
             <ul>
-              <li>Review data from analysts and researchers.</li>
-              <li>Determine optimal trade timing and size.</li>
-              <li>Execute orders and manage portfolios.</li>
+              <li>Assessing analyst and researcher recommendations.</li>
+              <li>Determining trade timing and size.</li>
+              <li>Executing buy/sell orders.</li>
+              <li>Adjusting portfolios in response to market changes.</li>
             </ul>
+            
+            <p>Precision and strategic thinking are essential for their role in maximizing performance.</p>
           </div>
           
           <h3 class="title is-4">Risk Management Team</h3>
           <div class="content has-text-justified">
-            <p>(Figure 5) Risk managers ensure safety by evaluating volatility, liquidity, and other exposures. They enforce stop-loss measures and signal portfolio rebalancing when necessary.</p>
+            <p>The Risk Management Team oversees the firm's exposure to market risks, ensuring trading activities stay within predefined limits.</p>
+            
             <ul>
-              <li>Monitor market risk factors.</li>
-              <li>Adjust trading strategies to stay within risk limits.</li>
-              <li>Collaborate with traders to manage drawdowns.</li>
+              <li>Assessing market volatility and liquidity.</li>
+              <li>Implementing risk mitigation strategies.</li>
+              <li>Advising Trader Agents on risk exposures.</li>
+              <li>Aligning portfolio with risk tolerance.</li>
             </ul>
-            <p>All agents follow a ReAct-style prompting framework. Their actions—like research, debate, or trade execution—are tracked in a shared environment, creating a cohesive multi-agent ecosystem reminiscent of real trading firms.</p>
+            
+            <p>They ensure financial stability and safeguard assets through effective risk control.</p>
+            
+            <p>All agents utilize the ReAct prompting framework, facilitating a collaborative and dynamic decision-making process reflective of real-world trading systems.</p>
           </div>
         </div>
       </div>
@@ -247,18 +223,26 @@
         <h2 class="title is-3">TradingAgents: Agent Workflow</h2>
         <div class="content has-text-justified">
           <h3 class="title is-4">Communication Protocol</h3>
-          <p>Relying solely on natural language can lead to “telephone effect” issues for complex, long-horizon tasks. <strong>TradingAgents</strong> introduces structured reports to preserve key details and reduce message distortion, drawing inspiration from frameworks like MetaGPT. Each agent produces or queries structured entries—concise and focused—to streamline interactions.</p>
+          <p>To enhance communication efficiency, <strong>TradingAgents</strong> employs a structured protocol that combines clear, structured outputs with natural language dialogue. This approach minimizes information loss and maintains context over long interactions, ensuring focused and effective communication among agents.</p>
           
           <h3 class="title is-4">Types of Agent Interactions</h3>
-          <p>Instead of lengthy dialogues, <strong>TradingAgents</strong> agents exchange structured documents containing critical data. Short natural language debates occur when merging contrasting opinions (e.g., bullish vs. bearish). Key communication types include:</p>
+          <p>Unlike previous frameworks that rely heavily on unstructured dialogue, our agents communicate through structured reports and diagrams, preserving essential information and enabling direct queries from the global state.</p>
+          
           <ul>
-            <li><strong>Analyst Team</strong>: Each analyst produces specialized reports (fundamentals, sentiment, etc.).</li>
-            <li><strong>Traders</strong>: Combine analyst reports into a decision signal with accompanying rationale.</li>
+            <li><strong>Analyst Team:</strong> Compiles research into concise analysis reports.</li>
+            <li><strong>Traders:</strong> Review analyst reports and produce decision signals with detailed rationales.</li>
           </ul>
-          <p>Debates among researchers or risk managers occur in natural language but are recorded as structured entries. This approach maintains clarity while enabling multi-round reasoning.</p>
+          
+          <p>Natural language dialogue is reserved for specific interactions, such as debates within the Researcher and Risk Management teams, fostering deeper reasoning and balanced decision-making.</p>
+          
+          <ul>
+            <li><strong>Researcher Team:</strong> Engages in debates to form balanced perspectives.</li>
+            <li><strong>Risk Management Team:</strong> Deliberates on trading plans from multiple risk perspectives.</li>
+            <li><strong>Fund Manager:</strong> Reviews and approves risk-adjusted trading decisions.</li>
+          </ul>
           
           <h3 class="title is-4">Backbone LLMs</h3>
-          <p>We employ both “quick-thinking” and “deep-thinking” LLMs, choosing models based on complexity and speed requirements. Analysts and traders use robust reasoning models for decision-making, while simpler tasks (e.g., data retrieval) rely on faster LLMs. This modular design, requiring no GPUs, allows easy swapping of different local or API-based models and ensures future scalability.</p>
+          <p>We select LLMs based on task requirements, using quick-thinking models for data retrieval and deep-thinking models for in-depth analysis and decision-making. This strategic alignment ensures efficiency and robust reasoning, allowing <strong>TradingAgents</strong> to operate without the need for GPUs and enabling easy integration of alternative models in the future.</p>
         </div>
       </div>
     </div>
@@ -271,25 +255,27 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Experiments</h2>
         <div class="content has-text-justified">
-          <p>We evaluate our framework on multi-asset data spanning a realistic time period, combining historical prices, news, social sentiment, insider transactions, and more. Baselines include traditional strategies like Buy-and-Hold, MACD, and SMA, ensuring a fair comparison.</p>
+          <p>We evaluated <strong>TradingAgents</strong> using a comprehensive experimental setup to assess its performance against various baselines.</p>
           
           <h3 class="title is-4">Back Trading</h3>
-          <p>Our dataset includes stocks like Apple and Google, daily news, social media sentiment, and technical indicators. Agents process only the data available up to each trading day, avoiding look-ahead bias.</p>
+          <p>Our simulation utilized a multi-asset, multi-modal financial dataset including historical stock prices, news articles, social media sentiments, insider transactions, financial reports, and technical indicators from January to March 2024.</p>
           
           <h3 class="title is-4">Simulation Setup</h3>
-          <p>The simulation runs from June 19, 2024, to November 19, 2024. <strong>TradingAgents</strong> autonomously generates buy, sell, or hold signals, then records performance metrics. This daily cycle repeats for each asset under study.</p>
+          <p>The trading environment spanned from June to November 2024. Agents operated on a daily basis, making decisions based on available data without future information, ensuring unbiased results.</p>
           
           <h3 class="title is-4">Baseline Models</h3>
-          <p>We benchmark against several baselines:</p>
+          <p>We compared <strong>TradingAgents</strong> against the following strategies:</p>
+          
           <ul>
-            <li><strong>Buy and Hold</strong></li>
-            <li><strong>MACD</strong></li>
-            <li><strong>KDJ and RSI</strong></li>
-            <li><strong>ZMR</strong></li>
-            <li><strong>SMA</strong></li>
+            <li><strong>Buy and Hold:</strong> Investing equally across selected stocks throughout the period.</li>
+            <li><strong>MACD:</strong> Momentum strategy based on MACD crossovers.</li>
+            <li><strong>KDJ & RSI:</strong> Combined momentum indicators for trading signals.</li>
+            <li><strong>ZMR:</strong> Mean reversion strategy based on price deviations.</li>
+            <li><strong>SMA:</strong> Trend-following strategy using moving average crossovers.</li>
           </ul>
           
           <h3 class="title is-4">Evaluation Metrics</h3>
+          
           <div class="columns">
             <div class="column">
               <figure class="image">
@@ -307,7 +293,7 @@
                 </figcaption>
               </figure>
             </div>
-          </div> 
+          </div>          
 
           <table class="table is-striped is-fullwidth is-centered">
             <thead>
@@ -401,16 +387,16 @@
               </tr>
             </tbody>
           </table>
-          <p class="has-text-centered"><strong>Table 1:</strong> TradingAgents: Comparison of Performance Metrics across AAPL, GOOGL, and AMZN.</p>
+          <p class="has-text-centered"><strong>Table 1:</strong> TradingAgents: Performance Metrics Comparison across AAPL, GOOGL, and AMZN.</p>
           
           <h3 class="title is-4">Sharpe Ratio</h3>
-          <p><strong>TradingAgents</strong> consistently beats all baselines in risk-adjusted returns, showing Sharpe Ratios above 5.60 and surpassing the nearest competitors by at least 2.07 points. Its adaptability and robust debate mechanism enable high returns with controlled risk.</p>
+          <p><strong>TradingAgents</strong> achieves superior risk-adjusted returns, consistently outperforming all baselines across AAPL, GOOGL, and AMZN. The enhanced Sharpe Ratios demonstrate the framework's effectiveness in balancing returns with risk, highlighting its robustness in diverse market conditions.</p>
           
           <h3 class="title is-4">Maximum Drawdown</h3>
-          <p>Rule-based baselines limit downside but sacrifice overall returns. <strong>TradingAgents</strong> balances both, keeping maximum drawdown below 2% while generating superior returns, aided by dedicated risk-control agents.</p>
+          <p>While rule-based strategies excel in controlling risk, <strong>TradingAgents</strong> maintains a low maximum drawdown without sacrificing high returns. This balance underscores the framework's ability to maximize profits while effectively managing risk.</p>
           
           <h3 class="title is-4">Explainability</h3>
-          <p>Unlike dense deep-learning models, <strong>TradingAgents</strong> provides transparent logs of its ReAct-style reasoning for every trade decision. This approach greatly enhances human interpretability, facilitating debugging and fine-tuning in real markets.</p>
+          <p>Unlike traditional deep learning models, <strong>TradingAgents</strong> offers transparent decision-making through natural language explanations. Each agent's actions are accompanied by detailed reasoning and tool usage, making the system's operations easily interpretable and debuggable, which is crucial for real-world financial applications.</p>
         </div>
       </div>
     </div>
@@ -423,7 +409,7 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Conclusion</h2>
         <div class="content has-text-justified">
-          <p>We introduced <strong>TradingAgents</strong>, a multi-agent LLM trading framework inspired by professional trading firms. Its specialized analysts, researcher debates, and risk management teams create a rich decision-making ecosystem. By effectively combining structured reports and targeted dialogues, <strong>TradingAgents</strong> exceeds baseline performance across returns, Sharpe ratio, and drawdown metrics. Future work will explore live trading, expanded agent roles, and real-time data integration for even more refined trading outcomes.</p>
+          <p>We presented <strong>TradingAgents</strong>, a multi-agent LLM-driven stock trading framework that emulates a realistic trading firm with specialized agents collaborating through debates and structured communication. Our framework leverages diverse data sources and multi-agent interactions to enhance trading decisions, achieving superior performance in cumulative returns, Sharpe ratio, and risk management compared to traditional strategies. Future work includes live deployment, expanding agent roles, and integrating real-time data processing to further improve performance.</p>
         </div>
       </div>
     </div>
