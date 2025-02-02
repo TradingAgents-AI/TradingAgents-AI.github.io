@@ -65,7 +65,7 @@
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">TradingAgents: Multi-Agents LLM Financial Trading Framework</h1>
           <div class="is-size-5 publication-authors">
-            <a href="https://yijia-xiao.github.io/" target="_blank" rel="noopener noreferrer"><span class="author-block">Yijia Xiao<sup>1</sup></span></a>,
+            <a href="https://yijia-xiao.github.io/" target="_blank" rel="noopener noreferrer"><span class="author-block">Yijia Xiao<sup>1</sup>,</span></a>
             <span class="author-block">Edward Sun<sup>1</sup>,</span>
             <span class="author-block">Di Luo<sup>1,2</sup>,</span>
             <span class="author-block">Wei Wang<sup>1</sup></span>
@@ -104,19 +104,13 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Introduction</h2>
+        <h2 class="title is-3">TradingAgents: Overview</h2>
         <div class="content has-text-justified">
-          <p>Autonomous agents powered by Large Language Models (LLMs) revolutionize decision-making by mimicking human workflows across various domains, including finance. Unlike traditional algorithmic trading systems that rely on quantitative models, LLMs excel in processing and understanding natural language data, making them adept at analyzing news, reports, and social media sentiment. Recent multi-agent LLM frameworks in finance have shown promise in creating explainable AI systems, enhancing decision transparency and reasoning.</p>
-          
-          <p>However, existing applications face two main challenges:</p>
-          
-          <strong>Organizational Modeling:</strong> Current frameworks often overlook the complex interactions that mirror real trading firms, focusing instead on isolated tasks. This limits their ability to replicate effective trading practices.
-          
-          <strong>Communication Efficiency:</strong> Reliance on unstructured natural language communication leads to information loss and context degradation over lengthy interactions, reducing effectiveness in complex tasks.</p>
-          
-          <p>Our framework addresses these issues by simulating the multi-agent decision-making processes of professional trading teams. We employ specialized agents with distinct roles inspired by real trading firms, coupled with a structured communication protocol that combines clear, structured outputs with natural language dialogue. This hybrid approach ensures precise and efficient interactions, enabling robust decision-making.</p>
-          
-          <p>We validate <strong>TradingAgents</strong> using historical financial data, comparing its performance against several baselines through metrics like cumulative return, Sharpe ratio, and maximum drawdown, demonstrating its superior effectiveness.</p>
+          <p><strong>TradingAgents</strong> leverages a multi-agent framework to simulate a professional trading firm with distinct roles: fundamental, sentiment, and technical analysts; researchers; traders; and risk managers. These agents collaborate through structured communication and debates, enhancing decision-making and optimizing trading strategies.</p>
+          <figure class="image">
+            <img src="./static/images/schema.png" alt="TradingAgents Overall Framework Organization">
+            <figcaption class="has-text-centered"><strong>Figure 1:</strong> TradingAgents Overall Framework Organization.<br><strong>I. Analysts Team</strong>: Four analysts concurrently gather relevant market information.<br><strong>II. Research Team</strong>: The team discusses and evaluates the collected data.<br><strong>III. Trader</strong>: Based on the researchers' analysis, the trader makes the trading decision.<br><strong>IV. Risk Management Team</strong>: Risk guardians assess the decision against current market conditions to mitigate risks.<br><strong>V. Fund Manager</strong>: The fund manager approves and executes the trade.</em></figcaption>
+          </figure>
         </div>
       </div>
     </div>
